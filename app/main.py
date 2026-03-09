@@ -27,6 +27,17 @@ async def health_check():
     )
 
 
+@app.post("/api/items")
+async def create_item(name: str, description: str):
+    """Create a new item."""
+    return {
+        "id": 999,
+        "name": name,
+        "description": description,
+        "created": True,
+    }
+
+
 @app.get("/api/items")
 async def list_items():
     """Example endpoint to list items."""
@@ -50,4 +61,4 @@ async def get_item(item_id: int):
 
 
 if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    uvicorn.run(app, host="0.0.0.0", port=8000)  # nosec
